@@ -86,4 +86,4 @@ function exe(message, args, commandName){
 }
 
 
-client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.m8clJVfJsfMySI_QXe1UmAQr3qs")
+client.login("")
