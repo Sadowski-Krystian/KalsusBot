@@ -1,0 +1,5 @@
+#files to ignore
+conf.js
+.env
+#folders to ignore
+/node_modules
