@@ -6,7 +6,7 @@ module.exports = {
         let user = message.guild.members.cache.get(id);
         console.log(id + "tomote");
         console.log(user.roles);
-        user.roles.add(`848171222184493077`);
+        user.roles.add(`845678055434879076`);
         
     }
 }

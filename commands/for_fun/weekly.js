@@ -9,6 +9,7 @@ module.exports = {
                 let content = lastMessage.content
                 let valueString = content.substring(content.indexOf(":"), content.lastIndexOf("<"));
                 let value = valueString.replace( /^\D+/g, '');
+                value = value.replace(/,/g, '')
                 value = value.replace(/\s/g, '')
                 console.log(value);
                 value = parseInt(value)
@@ -19,7 +20,8 @@ module.exports = {
                 console.log(precentage);
                 let newValue = value + precentage
                 console.log(newValue);
-                newValue = newValue.toLocaleString()
+                internationalNumberFormat = new Intl.NumberFormat('en-US')
+                newValue = internationalNumberFormat.format(newValue)
                 let send = rand * 100
                 send = parseInt(send)
                 if(send>0){
