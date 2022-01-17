@@ -32,7 +32,7 @@ module.exports = {
         
         function msgSend(val, rand){
             client.channels.fetch("874017637955424286", false).then((channel) => {
-                channel.send(`<@932663662651510914> \nDzienne losowanie \n${rand}% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
+                channel.send(`<@&862359981948534854> \nDzienne losowanie \n${rand}% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
         
