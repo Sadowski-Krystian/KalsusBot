@@ -38,7 +38,7 @@ client.once('ready', ()=>{
 client.msgcountczat = 0
 
 
-
+let timeout
 
 const restrictPings = ['459333178163724288']
 
@@ -54,8 +54,14 @@ client.on('messageCreate', async message =>{
                 console.log("bonżur");
             }
             if(message.channelId == "845678013898293261"){
+                try{
+                   clearTimeout(timeout) 
+                }catch(err){
+                    console.log(err);
+                }
+                
                 client.msgcountczat ++;
-                setTimeout(nonActivity, 7200000 );
+                timeout = setTimeout(nonActivity, 7200000 );
                 if(client.msgcountczat == 300){
                     console.log("zlicza wiadomości");
                     client.msgcountczat = 0
@@ -84,10 +90,13 @@ job1.start()
 function nonActivity(){
     let d = new Date();
     let hour = d.getHours()
-    if(hour>=12){
+    if(hour>12){
+        client.msgcountczat = 0
         console.log(hour);
         exe(null, null, "brakczat")
-        setTimeout(nonActivity, 7200000)
+        timeout = setTimeout(nonActivity, 7200000)
+    }else if(hour == 12){
+        timeout = setTimeout(nonActivity, 7200000)
     }else{
         console.log("jest po 00");
     }
