@@ -24,8 +24,8 @@ module.exports = {
            });
         
         function msgSend(val){
-            client.channels.fetch("845687256671846430", false).then((channel) => {
-                channel.send(` \n300 nowych wiadomości na <#845678013898293261> \n+10% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
+            client.channels.fetch("874017637955424286", false).then((channel) => {
+                channel.send(`<@932663662651510914> \n300 nowych wiadomości na <#845678013898293261> \n+10% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
         

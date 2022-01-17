@@ -54,10 +54,10 @@ client.on('messageCreate', async message =>{
                 exe(message, message.author.id, "wl")
                 console.log("bonżur");
             }
-            if(message.channelId == "845687256671846430"){
+            if(message.channelId == "845678013898293261"){
                 client.msgcountczat ++;
                 setTimeout(nonActivity, 7200000 );
-                if(client.msgcountczat == 2){
+                if(client.msgcountczat == 300){
                     console.log("zlicza wiadomości");
                     client.msgcountczat = 0
                     exe(message, null, "zkczat")
