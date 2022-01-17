@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const fs = require("fs");
-const conf = require("./conf.js")
 const {DisTube} = require('distube')
 var cron = require("cron");
 const client = new Discord.Client({
@@ -128,4 +127,4 @@ dziennelos.start()
 let tydzlosowanie = new cron.CronJob('00 00 00 * * sun', weekly);
 tydzlosowanie.start()
 
-client.login(process.env.TOKEN)
+client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.QFZDbiB08Fc162GTrtA1tnQZXVk")
