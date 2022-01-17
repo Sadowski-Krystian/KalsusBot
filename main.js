@@ -127,4 +127,4 @@ dziennelos.start()
 let tydzlosowanie = new cron.CronJob('00 00 00 * * sun', weekly);
 tydzlosowanie.start()
 
-client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.QFZDbiB08Fc162GTrtA1tnQZXVk")
+client.login(process.env.TOKEN)
