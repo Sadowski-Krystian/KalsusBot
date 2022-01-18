@@ -48,7 +48,7 @@ client.on('messageCreate', async message =>{
             if(message.author.bot){
                 if(message.content.includes("has been banned.")){
                     exe(message, null, "memberban")
-                }else if(message.content.includes("coscobotnienapisze")){
+                }else if(message.content.includes('Zgłoś się do osoby z rangą "Moderator nagród" aby otrzymać krety')){
                     exe(message, message.author.id, "sellkret")
                 }
                 if(message.channelId == "845695093784051732" && msg.includes("dzisiaj są urodziny")){
