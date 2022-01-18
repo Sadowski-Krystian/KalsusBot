@@ -59,7 +59,6 @@ client.on('messageCreate', async message =>{
                 }catch(err){
                     console.log(err);
                 }
-                console.log(timeout);
                 client.msgcountczat ++;
                 timeout = setTimeout(nonActivity, 1800000 );
                 if(client.msgcountczat == 300){
