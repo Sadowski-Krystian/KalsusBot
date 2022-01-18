@@ -138,4 +138,4 @@ function weekly(){
 
 
 
-client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.pgzoWZHa6tAwgY-9bEYczetJb60")
+client.login(process.env.TOKEN)
