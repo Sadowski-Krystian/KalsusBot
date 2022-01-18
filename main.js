@@ -38,7 +38,7 @@ client.once('ready', ()=>{
 client.msgcountczat = 0
 
 
-let timeout
+var timeout
 
 const restrictPings = ['459333178163724288']
 
@@ -49,7 +49,7 @@ client.on('messageCreate', async message =>{
             if(message.author.bot){
                 return
             }
-            if(message.author.id == "486965162130276395" && msg == "nub"){
+            if(message.author.id == "486965162130276395" && msg == "cośczegonigdynienapiszesz"){
                 exe(message, message.author.id, "wl")
                 console.log("bonżur");
             }
@@ -59,9 +59,9 @@ client.on('messageCreate', async message =>{
                 }catch(err){
                     console.log(err);
                 }
-                
+                console.log(timeout);
                 client.msgcountczat ++;
-                timeout = setTimeout(nonActivity, 7200000 );
+                timeout = setTimeout(nonActivity, 1800000 );
                 if(client.msgcountczat == 300){
                     console.log("zlicza wiadomości");
                     client.msgcountczat = 0
@@ -94,9 +94,9 @@ function nonActivity(){
         client.msgcountczat = 0
         console.log(hour);
         exe(null, null, "brakczat")
-        timeout = setTimeout(nonActivity, 7200000)
+        timeout = setTimeout(nonActivity, 1800000)
     }else if(hour == 12){
-        timeout = setTimeout(nonActivity, 7200000)
+        timeout = setTimeout(nonActivity, 1800000)
     }else{
         console.log("jest po 00");
     }
@@ -122,18 +122,20 @@ function exe(message, args, commandName){
         
     }
 }
-
-
-function daily(){
-    exe(null, null, "daily")
-}
-function weekly(){
-    exe(null, null, "weekly")
-}
-
-let dziennelos = new cron.CronJob('00 00 12 * * *', daily);
+let dziennelos = new cron.CronJob('00 00 11 * * *', daily);
 dziennelos.start()
 let tydzlosowanie = new cron.CronJob('00 00 00 * * sun', weekly);
 tydzlosowanie.start()
 
-client.login(process.env.TOKEN)
+function daily(){
+    exe(null, null, "daily")
+    console.log("daily");
+}
+function weekly(){
+    exe(null, null, "weekly")
+    console.log("weakly");
+}
+
+
+
+client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.pgzoWZHa6tAwgY-9bEYczetJb60")
