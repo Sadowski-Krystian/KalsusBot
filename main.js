@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const fs = require("fs");
 const {DisTube} = require('distube')
 var cron = require("cron");
+const async = require("hbs/lib/async");
 const client = new Discord.Client({
     intents: [
         Discord.Intents.FLAGS.GUILDS,
@@ -36,7 +37,7 @@ client.once('ready', ()=>{
 })
 
 client.msgcountczat = 0
-
+client.selscmd = ["?use z", "?use zł" , "?use złoty kret"]
 
 var timeout
 
@@ -47,6 +48,9 @@ client.on('messageCreate', async message =>{
         if((!msg.startsWith(prefix) )){
             
             if(message.author.bot){
+                if(message.content.includes("has been banned.")){
+                    exe(message, null, "memberban")
+                }
                 return
             }
             if(message.author.id == "486965162130276395" && msg == "cośczegonigdynienapiszesz"){
@@ -67,6 +71,18 @@ client.on('messageCreate', async message =>{
                     exe(message, null, "zkczat")
                 }
             }
+            if(message.channelId == "845695093784051732"){
+                exe(message, null, "ogloszenia")
+            }
+            if(message.channelId == "847820472791597086" && msg.includes('<@&848154751723110410>')){
+                exe(message, null, "konkurs")
+            }
+            for(let i =0; i<client.selscmd.length;i++){
+                if(msg==client.selscmd[i]){
+                    exe(message, message.author.id, "sellkret")
+                }
+            }
+            
             
         
         return
@@ -84,6 +100,7 @@ client.on('messageCreate', async message =>{
 
 
 })
+
 let job1 = new cron.CronJob('00 00 12 * * *', nonActivity);
 job1.start()
 function nonActivity(){
@@ -125,6 +142,8 @@ let dziennelos = new cron.CronJob('00 00 11 * * *', daily);
 dziennelos.start()
 let tydzlosowanie = new cron.CronJob('00 00 00 * * sun', weekly);
 tydzlosowanie.start()
+let newmonth = new cron.CronJob('00 00 00 1 * *', monthly);
+newmonth.start()
 
 function daily(){
     exe(null, null, "daily")
@@ -133,6 +152,10 @@ function daily(){
 function weekly(){
     exe(null, null, "weekly")
     console.log("weakly");
+}
+function monthly(){
+    exe(null, null, "monthly")
+    console.log("monthly");
 }
 
 
