@@ -37,8 +37,6 @@ client.once('ready', ()=>{
 })
 
 client.msgcountczat = 0
-client.selscmd = ["?use z", "?use zł" , "?use złoty kret"]
-
 var timeout
 
 const restrictPings = ['459333178163724288']
@@ -50,6 +48,11 @@ client.on('messageCreate', async message =>{
             if(message.author.bot){
                 if(message.content.includes("has been banned.")){
                     exe(message, null, "memberban")
+                }else if(message.content.includes("coscobotnienapisze")){
+                    exe(message, message.author.id, "sellkret")
+                }
+                if(message.channelId == "845695093784051732" && msg.includes("dzisiaj są urodziny")){
+                    exe(message, null, "urodziny")
                 }
                 return
             }
@@ -76,11 +79,6 @@ client.on('messageCreate', async message =>{
             }
             if(message.channelId == "847820472791597086" && msg.includes('<@&848154751723110410>')){
                 exe(message, null, "konkurs")
-            }
-            for(let i =0; i<client.selscmd.length;i++){
-                if(msg==client.selscmd[i]){
-                    exe(message, message.author.id, "sellkret")
-                }
             }
             
             

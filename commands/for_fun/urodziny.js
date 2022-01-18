@@ -1,5 +1,5 @@
 module.exports = {
-    name: "ogloszenia",
+    name: "urodziny",
     description: "Wyświetla spis komend",
     //usage: "debug",
     execute: async(message, id, client) =>{
@@ -14,7 +14,7 @@ module.exports = {
                 console.log(value);
                 value = parseInt(value)
                 let precentage
-                precentage = value * -0.08
+                precentage = value * 0.05
                 precentage = parseInt(precentage)
                 console.log(precentage);
                 let newValue = value + precentage
@@ -28,7 +28,7 @@ module.exports = {
         
         function msgSend(val){
             client.channels.fetch("874017637955424286", false).then((channel) => {
-                channel.send(`<@&862359981948534854> \nOgłoszenie \n-8% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
+                channel.send(`<@&862359981948534854> \nUrodziny \n5% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
         
