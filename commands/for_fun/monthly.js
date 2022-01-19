@@ -1,3 +1,4 @@
+const non = require("./zerovalue")
 module.exports = {
     name: "monthly",
     description: "Wyświetla spis komend",
@@ -18,9 +19,13 @@ module.exports = {
                 console.log(precentage);
                 let newValue = value + precentage
                 console.log(newValue);
-                internationalNumberFormat = new Intl.NumberFormat('en-US')
-                newValue = internationalNumberFormat.format(newValue)
-                msgSend(newValue)
+                if(newValue < 100000){
+                    non.execute(null, null, client)
+                }else{
+                    internationalNumberFormat = new Intl.NumberFormat('en-US')
+                    newValue = internationalNumberFormat.format(newValue)
+                    msgSend(newValue)
+                }
               })
               .catch(console.error);
            });

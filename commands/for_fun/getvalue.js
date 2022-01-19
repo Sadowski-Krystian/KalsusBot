@@ -1,9 +1,10 @@
 const non = require("./zerovalue")
 module.exports = {
-    name: "urodziny",
-    description: "Wyświetla spis komend",
-    //usage: "debug",
+    name: "debug",
+    description: "Wyświetla informamacje o użytkowniku i kanale",
+    usage: "debug",
     execute: async(message, id, client) =>{
+        var newValue
         client.channels.fetch("874017637955424286", false).then((channel) => {
             channel.messages.fetch({ limit: 1 }).then(messages => {
                 let lastMessage = messages.first();
@@ -14,29 +15,23 @@ module.exports = {
                 value = value.replace(/\s/g, '')
                 console.log(value);
                 value = parseInt(value)
-                let precentage
-                precentage = value * 0.05
+                sellKret(value, id)
+                let precentage = value * -0.05
                 precentage = parseInt(precentage)
                 console.log(precentage);
-                let newValue = value + precentage
-                console.log(newValue);
+                newValue = value + precentage
                 if(newValue < 100000){
                     non.execute(null, null, client)
                 }else{
+                    console.log(newValue);
                     internationalNumberFormat = new Intl.NumberFormat('en-US')
                     newValue = internationalNumberFormat.format(newValue)
-                    msgSend(newValue)
                 }
+                
               })
               .catch(console.error);
            });
+           return(newValue)
         
-        function msgSend(val){
-            client.channels.fetch("874017637955424286", false).then((channel) => {
-                channel.send(`<@&862359981948534854> \nUrodziny \n5% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
-            })
-        }
-        
-    
     }
 }

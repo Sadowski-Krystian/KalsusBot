@@ -1,3 +1,4 @@
+const non = require("./zerovalue")
 module.exports = {
     name: "weekly",
     description: "Wyświetla spis komend",
@@ -20,14 +21,18 @@ module.exports = {
                 console.log(precentage);
                 let newValue = value + precentage
                 console.log(newValue);
-                internationalNumberFormat = new Intl.NumberFormat('en-US')
-                newValue = internationalNumberFormat.format(newValue)
-                let send = rand * 100
-                send = parseInt(send)
-                if(send>0){
-                    send = "+"+send
+                if(newValue < 100000){
+                    non.execute(null, null, client)
+                }else{
+                    internationalNumberFormat = new Intl.NumberFormat('en-US')
+                    newValue = internationalNumberFormat.format(newValue)
+                    let send = rand * 100
+                    send = parseInt(send)
+                    if(send>0){
+                        send = "+"+send
+                    }
+                    msgSend(newValue, send)
                 }
-                msgSend(newValue, send)
               })
               .catch(console.error);
            });

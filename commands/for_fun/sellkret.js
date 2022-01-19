@@ -1,3 +1,4 @@
+const non = require("./zerovalue")
 module.exports = {
     name: "sellkret",
     description: "Wyświetla spis komend",
@@ -19,18 +20,23 @@ module.exports = {
                 precentage = parseInt(precentage)
                 console.log(precentage);
                 let newValue = value + precentage
-                console.log(newValue);
-                internationalNumberFormat = new Intl.NumberFormat('en-US')
-                newValue = internationalNumberFormat.format(newValue)
+                if(newValue < 100000){
+                    non.execute(null, null, client)
+                }else{
+                    console.log(newValue);
+                    internationalNumberFormat = new Intl.NumberFormat('en-US')
+                    newValue = internationalNumberFormat.format(newValue)
                 
-                msgSend(newValue)
+                    msgSend(newValue)
+                }
+                
               })
               .catch(console.error);
            });
         
         function msgSend(val){
             client.channels.fetch("874017637955424286", false).then((channel) => {
-                channel.send(`<@&862359981948534854> \nSprzedaż słotego kreta \n-5% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
+                channel.send(`<@&862359981948534854> \nSprzedaż złotego kreta \n-5% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
         function sellKret(val, id){
