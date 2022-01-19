@@ -38,6 +38,7 @@ client.once('ready', ()=>{
 
 client.msgcountczat = 0
 var timeout
+var timeoutdzien
 
 const restrictPings = ['459333178163724288']
 
@@ -62,7 +63,8 @@ client.on('messageCreate', async message =>{
             }
             if(message.channelId == "845678013898293261"){
                 try{
-                   clearTimeout(timeout) 
+                   clearTimeout(timeout)
+                   clearTimeout(timeoutdzien) 
                 }catch(err){
                     console.log(err);
                 }
@@ -113,8 +115,8 @@ function nonActivity(){
         console.log(timeout + "Nieliczenie wiadomosci");
     }else if(hour == 12){
         console.log("job started");
-        timeout = setTimeout(nonActivity, 1800000)
-        console.log(timeout + "Started");
+        timeoutdzien = setTimeout(nonActivity, 1800000)
+        console.log(timeoutdzien + "Started");
     }else{
         console.log("jest po 00");
     }
