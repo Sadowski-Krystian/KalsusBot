@@ -108,9 +108,13 @@ function nonActivity(){
         client.msgcountczat = 0
         console.log(hour);
         exe(null, null, "brakczat")
+        console.log("czat nieaktywny");
         timeout = setTimeout(nonActivity, 1800000)
+        console.log(timeout + "Nieliczenie wiadomosci");
     }else if(hour == 12){
+        console.log("job started");
         timeout = setTimeout(nonActivity, 1800000)
+        console.log(timeout + "Started");
     }else{
         console.log("jest po 00");
     }
