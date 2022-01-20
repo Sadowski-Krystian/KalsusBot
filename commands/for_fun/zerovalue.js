@@ -1,7 +1,7 @@
 module.exports = {
-    name: "debug",
+    name: "zelovalue",
     description: "Wyświetla informamacje o użytkowniku i kanale",
-    usage: "debug",
+    //usage: "debug",
     execute: async(message, id, client) =>{
 
 

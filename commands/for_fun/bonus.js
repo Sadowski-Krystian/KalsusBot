@@ -1,9 +1,17 @@
+const perm = require('../admin/permission.js')
 const non = require("./zerovalue")
 module.exports = {
     name: "bonus",
     description: "Wyświetla spis komend",
     usage: "bonus <value>",
     execute: async(message, args, client) =>{
+        let zlchannel = client.channels.cache.get('874017637955424286');
+        let authorid = message.author.id
+        let mymember = message.guild.members.cache.get(authorid)
+        if(!mymember.permissionsIn(zlchannel).has("SEND_MESSAGES")){
+            perm.execute(message, message.author.id, client)
+            return 
+        }
         let usage = "bonus <value>"
         if(args.length <1){
             message.channel.send(`Niepoprawne użycie komendy \n${usage}`)
