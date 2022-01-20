@@ -37,10 +37,27 @@ client.once('ready', ()=>{
 })
 
 client.msgcountczat = 0
+client.wscount = 0
 var timeout
 var timeoutdzien
 
 const restrictPings = ['459333178163724288']
+
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+    console.log("member update");
+    if(oldMember.roles.cache.size < newMember.roles.cache.size) {
+        newMember.roles.cache.forEach(role => {
+            if (!oldMember.roles.cache.has(role.id)) {
+                console.log(role);
+            }
+        });
+    }
+})
+
+client.on('guildScheduledEvent', async guildScheduledEvent => {
+    exe(null, null, "event")
+})
+
 
 client.on('messageCreate', async message =>{
     let msg = message.content.toLowerCase()
@@ -51,6 +68,8 @@ client.on('messageCreate', async message =>{
                     exe(message, null, "memberban")
                 }else if(message.content.includes('Zgłoś się do osoby z rangą "Moderator nagród" aby otrzymać krety')){
                     exe(message, message.author.id, "sellkret")
+                   
+                    
                 }
                 if(message.channelId == "845695093784051732" && msg.includes("dzisiaj są urodziny")){
                     exe(message, null, "urodziny")
@@ -82,7 +101,15 @@ client.on('messageCreate', async message =>{
             if(message.channelId == "847820472791597086" && msg.includes('<@&848154751723110410>')){
                 exe(message, null, "konkurs")
             }
-            
+            if(message.channelId == "926145953541537843" || message.channelId == "921499736320647249"){
+                client.wscount ++
+                if(client.wscount == 10){
+                    console.log("zlicza wiadomości");
+                    client.wscount = 0
+                    exe(message, null, "zkczat")
+                }
+            }
+
             
         
         return
@@ -92,14 +119,10 @@ client.on('messageCreate', async message =>{
             exe(message, args, commandName)
         }
     
-    
-    
-    
-    
-    
-
 
 })
+
+
 
 let job1 = new cron.CronJob('00 00 12 * * *', nonActivity);
 job1.start()
