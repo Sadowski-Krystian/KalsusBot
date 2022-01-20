@@ -1,17 +1,13 @@
+
 const non = require("./zerovalue")
+const get = require("./getlastmsg")
 module.exports = {
     name: "sellkret",
     description: "Wyświetla spis komend",
     //usage: "debug",
     execute: async(message, id, client) =>{
         var previousMessage
-            message.channel.messages.fetch({limit: 2})
-                .then(messageMappings => {
-                let messages = Array.from(messageMappings.values());
-                previousMessage = messages[1];
-                
-            })
-            .catch(error => console.log(error))
+            
         client.channels.fetch("874017637955424286", false).then((channel) => {
             channel.messages.fetch({ limit: 1 }).then(messages => {
                 let lastMessage = messages.first();
@@ -22,7 +18,15 @@ module.exports = {
                 value = value.replace(/\s/g, '')
                 console.log(value);
                 value = parseInt(value)
-                sellKret(value, previousMessage.author.id)
+                message.channel.messages.fetch({limit: 2})
+                    .then(messageMappings => {
+                    let messages = Array.from(messageMappings.keys());
+                    previousMessage = messages[1];
+                    get.execute(message, previousMessage, value)
+                
+                })
+                .catch(error => console.log(error))
+                //sellKret(value, previousMessage.author.id)
                 let precentage = value * -0.05
                 precentage = parseInt(precentage)
                 console.log(precentage);
@@ -48,9 +52,7 @@ module.exports = {
             })
         }
         function sellKret(val, id){
-            client.channels.fetch("847553937568432129", false).then((channel) => {
-                channel.send(`?add-money bank ${id} ${val}`)
-            })
+           
         }
         
     

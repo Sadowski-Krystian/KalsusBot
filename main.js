@@ -66,7 +66,7 @@ client.on('messageCreate', async message =>{
             if(message.author.bot){
                 if(message.content.includes("has been banned.")){
                     exe(message, null, "memberban")
-                }else if(message.content.includes('Zgłoś się do osoby z rangą "Moderator nagród" aby otrzymać krety')){
+                }else if(message.content.includes('Twoje krety niedługo znajdą się w Twoim banku')){
                     exe(message, message.author.id, "sellkret")
                    
                     
