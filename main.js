@@ -187,4 +187,4 @@ function monthly(){
 
 
 
-client.login("OTMxMjk1MDQ4MzY3MjQzMjg0.YeCWGg.GiqEeiG015Afim1JIdWiaJdHVnA")
+client.login(process.env.TOKEN)
