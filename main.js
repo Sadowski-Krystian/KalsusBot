@@ -64,7 +64,7 @@ client.on('messageCreate', async message =>{
         if((!msg.startsWith(prefix) )){
             
             if(message.author.bot){
-                if(message.content.includes("has been banned.")){
+                if(message.content.includes("has been banned.") || message.content.includes("has been temp-banned")){
                     exe(message, null, "memberban")
                 }else if(message.content.includes('Twoje krety niedługo znajdą się w Twoim banku')){
                     exe(message, message.author.id, "sellkret")
@@ -89,7 +89,7 @@ client.on('messageCreate', async message =>{
                 }
                 client.msgcountczat ++;
                 timeout = setTimeout(nonActivity, 1800000 );
-                if(client.msgcountczat == 300){
+                if(client.msgcountczat == 500){
                     console.log("zlicza wiadomości");
                     client.msgcountczat = 0
                     exe(message, null, "zkczat")
