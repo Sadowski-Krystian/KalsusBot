@@ -32,7 +32,7 @@ module.exports = {
         
         function msgSend(val){
             client.channels.fetch("874017637955424286", false).then((channel) => {
-                channel.send(`<@&862359981948534854> \n300 nowych wiadomości na <#845678013898293261> \n+10% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
+                channel.send(`<@&862359981948534854> \n500 nowych wiadomości na <#845678013898293261> \n+10% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
         

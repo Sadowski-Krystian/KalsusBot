@@ -2,7 +2,7 @@ const perm = require('../admin/permission.js')
 const non = require("./zerovalue")
 module.exports = {
     name: "bonus",
-    description: "Wyświetla spis komend",
+    description: "bonusowe losowanie złotego kreta",
     usage: "bonus <value>",
     execute: async(message, args, client) =>{
         let zlchannel = client.channels.cache.get('874017637955424286');
