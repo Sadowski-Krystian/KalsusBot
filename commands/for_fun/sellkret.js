@@ -1,4 +1,4 @@
-
+const conf = require("../../conf.js")
 const non = require("./zerovalue")
 const get = require("./getlastmsg")
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     execute: async(message, id, client) =>{
         var previousMessage
             
-        client.channels.fetch("874017637955424286", false).then((channel) => {
+        client.channels.fetch(conf.gieldachannel, false).then((channel) => {
             channel.messages.fetch({ limit: 1 }).then(messages => {
                 let lastMessage = messages.first();
                 let content = lastMessage.content
@@ -47,13 +47,11 @@ module.exports = {
            
         
         function msgSend(val){
-            client.channels.fetch("874017637955424286", false).then((channel) => {
+            client.channels.fetch(conf.gieldachannel, false).then((channel) => {
                 channel.send(`<@&862359981948534854> \nSprzedaż złotego kreta \n-5% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }
-        function sellKret(val, id){
-           
-        }
+        
         
     
     }
