@@ -1,10 +1,11 @@
 const non = require("./zerovalue")
+const conf = require("../../conf.js")
 module.exports = {
     name: "buypass",
     description: "Wyświetla spis komend",
     //usage: "debug",
     execute: async(message, id, client) =>{
-        client.channels.fetch("874017637955424286", false).then((channel) => {
+        client.channels.fetch(conf.gieldachannel, false).then((channel) => {
             channel.messages.fetch({ limit: 1 }).then(messages => {
                 let lastMessage = messages.first();
                 let content = lastMessage.content
@@ -32,7 +33,7 @@ module.exports = {
            });
         
         function msgSend(val){
-            client.channels.fetch("874017637955424286", false).then((channel) => {
+            client.channels.fetch(conf.gieldachannel, false).then((channel) => {
                 channel.send(`<@&862359981948534854> \nZakup karnetu premium \n+10% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }

@@ -1,11 +1,12 @@
 const perm = require('../admin/permission.js')
 const non = require("./zerovalue")
+const conf = require("../../conf.js")
 module.exports = {
     name: "bonus",
     description: "bonusowe losowanie złotego kreta",
     usage: "bonus <value>",
     execute: async(message, args, client) =>{
-        let zlchannel = client.channels.cache.get('874017637955424286');
+        let zlchannel = client.channels.cache.get(conf.gieldachannel);
         let authorid = message.author.id
         let mymember = message.guild.members.cache.get(authorid)
         if(!mymember.permissionsIn(zlchannel).has("SEND_MESSAGES")){
@@ -24,7 +25,7 @@ module.exports = {
                 message.channel.send("nie można losować ujemnych lub zerowych wartości")
                 return
             }
-            client.channels.fetch("874017637955424286", false).then((channel) => {
+            client.channels.fetch(conf.gieldachannel, false).then((channel) => {
                 channel.messages.fetch({ limit: 1 }).then(messages => {
                     let lastMessage = messages.first();
                     let content = lastMessage.content
@@ -61,7 +62,7 @@ module.exports = {
         
         
         function msgSend(val, rand){
-            client.channels.fetch("874017637955424286", false).then((channel) => {
+            client.channels.fetch(conf.gieldachannel, false).then((channel) => {
                 channel.send(`<@&862359981948534854> \nBonusowe losowanie \n${rand}% \nAktualna wartość: ${val}  <:kret:847542505607790693>`)
             })
         }

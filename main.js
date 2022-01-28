@@ -106,7 +106,7 @@ client.on('messageCreate', async message =>{
                 if(client.wscount == 10){
                     console.log("zlicza wiadomości");
                     client.wscount = 0
-                    exe(message, null, "zkczat")
+                    exe(message, null, "wspolprace")
                 }
             }
 
