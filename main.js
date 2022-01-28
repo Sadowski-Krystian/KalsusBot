@@ -129,7 +129,7 @@ job1.start()
 function nonActivity(){
     let d = new Date();
     let hour = d.getHours()
-    if(hour>12){
+    if(hour>11 || hour<=1){
         client.msgcountczat = 0
         console.log(hour);
         exe(null, null, "brakczat")
